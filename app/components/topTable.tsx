@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { DataTable, TextInput } from 'react-native-paper';
+import ModalComponent from './Modal';
 
 const TopTable = () => {
 
@@ -12,7 +13,8 @@ const TopTable = () => {
                     <DataTable.Title style={styles.tableTitle}><Text className='text-white font-semibold'>Unit</Text></DataTable.Title>
                     <DataTable.Title style={styles.tableTitle}>
                         <TouchableOpacity>
-                            <Text className='text-white'>Rate</Text>
+                            {/* <Text className='text-white'>Rate</Text> */}
+                            <ModalComponent />
                         </TouchableOpacity>
                     </DataTable.Title>
                 </DataTable.Header>
