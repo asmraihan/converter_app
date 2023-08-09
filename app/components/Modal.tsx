@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Modal, Portal, Button, PaperProvider, TextInput } from 'react-native-paper';
 import { transparent } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 const ModalComponent = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -30,7 +30,7 @@ const ModalComponent = () => {
             <Text className='text-white mx-auto'>Change YARN Rate/CTN</Text>
             <View className='flex-row justify-center items-center gap-4 mt-2'>
        
-            <TextInput style={styles.input} keyboardType='number-pad' />
+            <TextInput style={styles.input} textColor='white' activeUnderlineColor='#3F72AF' keyboardType='number-pad' />
           <TouchableOpacity className='px-2 py-3 bg-[#0F4C75] hover:bg-zinc-500 rounded-md' onPress={hideModal} >
               <Text className='text-xs text-gray-300 font-semibold'>Confirm</Text>
             </TouchableOpacity>
@@ -39,7 +39,7 @@ const ModalComponent = () => {
         </Modal>
       </Portal>
       <Button style={{ marginTop: 35 }} onPress={showModal}>
-        <Text className='text-white font-semibold'>Unit</Text>
+        <Text className='text-white font-semibold pt-8 text-xs'>UNIT</Text>
       </Button>
     </PaperProvider>
   );
