@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         padding: 15,
         fontSize: 20,
     },
-    tableHeader: {
+    topTableHeader: {
         backgroundColor: '#3F72AF',
         borderRadius: 10,
         borderBottomColor: '#001C30',
