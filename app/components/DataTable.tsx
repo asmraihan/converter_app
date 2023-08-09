@@ -4,11 +4,11 @@ import { DataTable, TextInput } from 'react-native-paper';
 
 const TableExample = () => {
 
-    const [yarnCtn, setYarnCtn] = useState(0);
-    const [yarnTotalTk, setYarnTotalTk] = useState(0);
-    const [rubberCtn, setRubberCtn] = useState(0);
-    const [rubberTotalTk, setRubberTotalTk] = useState(0);
-    const [total, setTotal] = useState(0);
+    const [yarnCtn, setYarnCtn] = useState<number>(0);
+    const [yarnTotalTk, setYarnTotalTk] = useState<number>(0);
+    const [rubberCtn, setRubberCtn] = useState<number>(0);
+    const [rubberTotalTk, setRubberTotalTk] = useState<number>(0);
+    const [total, setTotal] = useState<number>(0);
    const calculateTotal = () => {
         setTotal(yarnTotalTk + rubberTotalTk);
     }
@@ -50,7 +50,7 @@ const TableExample = () => {
                 </DataTable.Title>
             </DataTable.Header>
             <DataTable.Row>
-                <DataTable.Cell></DataTable.Cell>
+                <DataTable.Cell> </DataTable.Cell>
                 <DataTable.Cell>
                 <TextInput  onChangeText={(count2) => {
                         setRubberCtn(parseFloat(count2) * 20);

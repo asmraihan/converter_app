@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
-import { Alert, StyleSheet, Text, TouchableOpacity,View } from 'react-native';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { DataTable, TextInput } from 'react-native-paper';
 
 const TopTable = () => {
 
     return (
-      <View className='mx-4'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center mb-8'>Unit Conversion</Text>
-          <DataTable style={styles.container}>
-            <DataTable.Header style={styles.tableHeader}>
-            
-                
-                <DataTable.Title style={styles.tableTitle}><Text className='text-white font-semibold'>Unit</Text></DataTable.Title>
-                <DataTable.Title style={styles.tableTitle}>
-                    <TouchableOpacity>
-                        <Text className='text-white'>Rate</Text>
-                    </TouchableOpacity>
-                </DataTable.Title>
-            </DataTable.Header>
-            <DataTable.Row>
-                <DataTable.Cell><Text className='text-white font-semibold'>test</Text></DataTable.Cell>
-                <DataTable.Cell><Text className='text-white font-semibold'>test2</Text></DataTable.Cell>
-            </DataTable.Row>          
-        </DataTable>
-      </View>
+        <View className='mx-4'>
+            <Text className='text-gray-300 text-2xl font-semibold text-center mb-8'>Unit Conversion</Text>
+            <DataTable style={styles.container}>
+                <DataTable.Header style={styles.tableHeader}>
+                    <DataTable.Title style={styles.tableTitle}><Text className='text-white font-semibold'>Unit</Text></DataTable.Title>
+                    <DataTable.Title style={styles.tableTitle}>
+                        <TouchableOpacity>
+                            <Text className='text-white'>Rate</Text>
+                        </TouchableOpacity>
+                    </DataTable.Title>
+                </DataTable.Header>
+                <DataTable.Row>
+                    <DataTable.Cell><Text className='text-white font-semibold'>test</Text></DataTable.Cell>
+                    <DataTable.Cell><Text className='text-white font-semibold'>test2</Text></DataTable.Cell>
+                </DataTable.Row>
+            </DataTable>
+        </View>
     );
 };
 
