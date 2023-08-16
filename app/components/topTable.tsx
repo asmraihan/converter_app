@@ -4,7 +4,7 @@ import { DataTable, TextInput } from 'react-native-paper';
 import ModalComponent from './Modal';
 
 const TopTable = ( {yarnUnitRate, setYarnUnitRate}) => {
-    console.log(yarnUnitRate)
+    // console.log(yarnUnitRate)
     return (
         <View className='mx-4'>
             <Text className='text-gray-300 text-2xl font-semibold text-center mb-8'>Unit Conversion</Text>

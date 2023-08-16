@@ -2,31 +2,30 @@ import React, { useState } from 'react';
 import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { DataTable, TextInput } from 'react-native-paper';
 
-
 const TableExample = () => {
-   
+
     const [yarnUnitRate, setYarnUnitRate] = useState();
     const [rubberUnitRate, setRubberUnitRate] = useState();
-    const [yarnCtn, setYarnCtn] = useState<number>(0);
-    const [yarnTotalTk, setYarnTotalTk] = useState<number>(0);
-    const [rubberCtn, setRubberCtn] = useState<number>(0);
-    const [rubberTotalTk, setRubberTotalTk] = useState<number>(0);
-    const [total, setTotal] = useState<number>(0);
+    const [yarnCtn, setYarnCtn] = useState(0);
+    const [yarnTotalTk, setYarnTotalTk] = useState(0);
+    const [rubberCtn, setRubberCtn] = useState(0);
+    const [rubberTotalTk, setRubberTotalTk] = useState(0);
+    const [total, setTotal] = useState(0);
 
     const calculateTotal = () => {
-        console.log('unit rates',yarnUnitRate, rubberUnitRate)
+        // console.log('unit rates', yarnUnitRate, rubberUnitRate)
 
 
-        if(!yarnUnitRate && !rubberUnitRate){
+        if (!yarnUnitRate && !rubberUnitRate) {
             Alert.alert('Please enter both unit rates')
-        }else{
+        } else {
 
-            if(!yarnCtn && !rubberCtn){
+            if (!yarnCtn && !rubberCtn) {
                 Alert.alert('Please enter both CTN values')
             } else {
-                const yarnTotalTk = parseFloat(yarnCtn) * parseFloat(yarnUnitRate);
+                const yarnTotalTk = parseFloat(yarnCtn).toFixed(3) * parseFloat(yarnUnitRate);
                 setYarnTotalTk(yarnTotalTk);
-                const rubberTotalTk = parseFloat(rubberCtn) * parseFloat(rubberUnitRate);
+                const rubberTotalTk = parseFloat(rubberCtn).toFixed(3) * parseFloat(rubberUnitRate);
                 setRubberTotalTk(rubberTotalTk);
             }
             setTotal(yarnTotalTk + rubberTotalTk);
@@ -34,8 +33,13 @@ const TableExample = () => {
     }
 
     const onRefresh = () => {
-        console.log('refreshing')
-    
+        setYarnUnitRate('');
+        setRubberUnitRate('');
+        setYarnCtn('');
+        setRubberCtn('');
+        setYarnTotalTk(0);
+        setRubberTotalTk(0);
+        setTotal(0);
     }
 
     return (
@@ -56,23 +60,27 @@ const TableExample = () => {
                     <DataTable.Row>
                         <DataTable.Cell><Text className='text-white font-semibold'>YARN</Text></DataTable.Cell>
                         <DataTable.Cell>
-                            <TextInput textColor='white' onChangeText={(count) => {
-                                setYarnUnitRate(parseFloat(count));
-                            }} style={styles.input} keyboardType='number-pad' />
+                            <TextInput
+                                value={yarnUnitRate}
+                                textColor='white' onChangeText={(count) => {
+                                    setYarnUnitRate(parseFloat(count));
+                                }} style={styles.input} keyboardType='number-pad' />
                         </DataTable.Cell>
                     </DataTable.Row>
                     <DataTable.Row>
                         <DataTable.Cell><Text className='text-white font-semibold'>RUBBER</Text></DataTable.Cell>
                         <DataTable.Cell>
-                        <TextInput textColor='white' onChangeText={(count) => {
-                                setRubberUnitRate(parseFloat(count));
-                            }} style={styles.input} keyboardType='number-pad' />
+                            <TextInput
+                                value={rubberUnitRate}
+                                textColor='white' onChangeText={(count) => {
+                                    setRubberUnitRate(parseFloat(count));
+                                }} style={styles.input} keyboardType='number-pad' />
                         </DataTable.Cell>
                     </DataTable.Row>
                 </DataTable>
             </View>
 
-                        {/* asdasd */}
+            {/* asdasd */}
 
             <DataTable style={styles.container}>
                 <DataTable.Header style={styles.tableHeader}>
@@ -88,12 +96,14 @@ const TableExample = () => {
                 <DataTable.Row>
                     <DataTable.Title className=''> <Text className='text-white font-semibold'></Text> </DataTable.Title>
                     <DataTable.Cell>
-                        <TextInput textColor='white' onChangeText={(count) => {
-                            setYarnCtn(parseFloat(count) * 79.3656);
-                            // setYarnTotalTk(parseFloat(yarnCtn * 70.999647204))
-                        }} style={styles.input} keyboardType='number-pad' />
+                        <TextInput
+                            value={yarnCtn}
+                            textColor='white' onChangeText={(count) => {
+                                setYarnCtn(parseFloat(count) * 79.3656);
+                                // setYarnTotalTk(parseFloat(yarnCtn * 70.999647204))
+                            }} style={styles.input} keyboardType='number-pad' />
                     </DataTable.Cell>
-                    <DataTable.Cell><Text className='text-white font-semibold'>{(yarnCtn).toFixed(3)}</Text></DataTable.Cell>
+                    <DataTable.Cell><Text className='text-white font-semibold'>{(yarnCtn)}</Text></DataTable.Cell>
                     <DataTable.Cell><Text className='text-white font-semibold'>{(yarnTotalTk).toFixed(3)}</Text></DataTable.Cell>
                 </DataTable.Row>
 
@@ -111,12 +121,14 @@ const TableExample = () => {
                 <DataTable.Row>
                     <DataTable.Cell> </DataTable.Cell>
                     <DataTable.Cell>
-                        <TextInput textColor='white' onChangeText={(count2) => {
+                        <TextInput
+                            value={rubberCtn}
+                        textColor='white' onChangeText={(count2) => {
                             setRubberCtn(parseFloat(count2) * 55.115);
                             // setRubberTotalTk((parseFloat(count2) * 6889.375).toFixed(3))
                         }} style={styles.input} keyboardType='number-pad' />
                     </DataTable.Cell>
-                    <DataTable.Cell><Text className='text-white font-semibold'>{(rubberCtn).toFixed(3)}</Text></DataTable.Cell>
+                    <DataTable.Cell><Text className='text-white font-semibold'>{(rubberCtn)}</Text></DataTable.Cell>
                     <DataTable.Cell><Text className='text-white font-semibold'>{(rubberTotalTk).toFixed(3)}</Text></DataTable.Cell>
                 </DataTable.Row>
 
@@ -131,7 +143,7 @@ const TableExample = () => {
                 <TouchableOpacity onPress={() => calculateTotal()} className='mt-10 mx-10 px-4 py-3 bg-[#0F4C75] hover:bg-zinc-500 rounded-md '>
                     <Text className='text-center text-white text-lg font-semibold'>Calculate</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => onRefresh()} className='mt-10 mx-10 px-4 py-3 bg-red-500 hover:bg-zinc-500 rounded-md '>
+                <TouchableOpacity onPress={onRefresh} className='mt-10 mx-10 px-4 py-3 bg-red-500 hover:bg-zinc-500 rounded-md '>
                     <Text className='text-center text-white text-lg font-semibold'>Refresh</Text>
                 </TouchableOpacity>
             </DataTable>
